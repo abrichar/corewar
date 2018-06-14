@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:58:03 by eliajin           #+#    #+#             */
-/*   Updated: 2018/06/14 20:13:00 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/06/14 20:12:43 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int					main(int argc, char **argv)
 	ft_init(&env);
 	parsing(argv[argc - 1], &env);
 	if (!env.buff)
-		msg_error(ERR_NOCODE, 0);
+		msg_error(ERRO_NOCODE, 0);
 	verif_size(&env);
 	size_all(&env);
 	write_out(&env);
