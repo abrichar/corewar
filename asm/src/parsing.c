@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 00:17:52 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/07 12:31:25 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/06/14 19:04:42 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	checking_op(char *line, t_asm *env, int index)
 
 static void	check_line(char *line, char *tmp, t_asm *env, int index)
 {
+	ft_printf("line : %s\n", line);
 	if (ft_strcmp(line, "") == 0)
 		return ;
 	if (line[0] == '#')
@@ -81,7 +82,8 @@ void		parsing(char *file, t_asm *env)
 		tmp = ft_epur_str(line);
 		check_line(tmp, line, env, index);
 		ft_strdel(&line);
-		ft_strdel(&tmp);
+//		ft_strdel(&tmp);
+		ft_putstr("check\n");
 		index++;
 	}
 	if (ret == -1)

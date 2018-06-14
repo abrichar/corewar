@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 00:49:32 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/07 10:43:44 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/06/14 19:07:20 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	free_all(t_asm *env)
 		ft_strdel(&tmp->content);
 		tmp = tmp->next;
 	}
-	free(tmp);
+	tmp = NULL;
 }
 
 void	free_split(char **split)
@@ -31,6 +31,7 @@ void	free_split(char **split)
 	int i;
 
 	i = -1;
-	while (++i < tab_len(split))
-		ft_strdel(&split[i]);
+	if (split)
+		while (++i < tab_len(split) && split[i])
+			ft_strdel(&split[i]);
 }

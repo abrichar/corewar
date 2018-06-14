@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/30 13:54:01 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/06/14 18:49:12 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,4 +151,5 @@ unsigned int			write_label2(t_parsing *tmp, char *to_search, unsigned
 */
 void					free_all(t_asm *env);
 void					free_split(char **split);
+void					free_parsing_s(t_parsing *to_free);
 #endif

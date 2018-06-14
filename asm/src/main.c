@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:58:03 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/08 23:56:36 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/06/14 19:09:13 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void			size_all(t_asm *env)
 		tmp->size_to_here = size_max;
 		tmp = tmp->next;
 	}
-	free(tmp);
 }
 
 /*
@@ -90,13 +89,18 @@ int					main(int argc, char **argv)
 
 	detect_errors(argc, argv[1], &env);
 	ft_init(&env);
+	ft_putstr("testing0\n");
 	parsing(argv[argc - 1], &env);
+	ft_putstr("testing1\n");
 	if (!env.buff)
 		msg_error(ERR_NOCODE, 0);
+	ft_putstr("testing2\n");
 	verif_size(&env);
 	ft_printf("size : %d\n", env.header->prog_size);
 	size_all(&env);
+	ft_putstr("testing3\n");
 	write_out(&env);
+	ft_putstr("testing4\n");
 	ft_printf("Writing output program to %s\n", env.champ_name);
 	free_all(&env);
 	exit(EXIT_SUCCESS);

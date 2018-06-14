@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 16:46:23 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/07 13:07:03 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/06/14 19:17:43 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void				write_ind(char *ind, t_asm *env,
 	}
 	ft_putshort_fd(to_write, env->fd);
 	ft_strdel(&to_search);
-	free(tmp);
+	tmp = NULL;
 }
 
 void					write_params(t_asm *env, char *split, t_op actual,

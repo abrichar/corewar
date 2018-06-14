@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 22:25:42 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/07 13:06:26 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/06/14 19:14:43 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,9 @@ void					write_out(t_asm *env)
 	write(env->fd, env->header->prog_name, PROG_NAME_LENGTH + 4);
 	ft_putint_fd(env->header->prog_size, env->fd);
 	write(env->fd, env->header->comment, COMMENT_LENGTH + 4);
+	ft_putstr("write2\n");
 	write_body(env);
+	ft_putstr("write3\n");
 	close(env->fd);
+	ft_putstr("write4\n");
 }
