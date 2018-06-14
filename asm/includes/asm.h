@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/06/14 18:49:12 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/04 02:40:24 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 # define OUTPUT_EXT "cor"
 # define INPUT_EXT 's'
 # define REG_DIGIT "0123456"
-# define USAGE "usage: ./asm <fichier_source.s>"
+# define USAGE "usage: ./asm <fichier_source.s> \n"
 # define ERR_OPEN "Erreur 01 : Erreur à l'ouverture du fichier."
 # define ERR_CLOSE "Erreur 02 : Erreur à la fermeture du fichier."
-# define ERR_SYNTAX "Erreur 03 : Ligne non conforme."
+# define ERR_SYNTAX "Erreur 03 - Ligne non conforme."
 # define ERR_NAME "Erreur 04 : Erreur au nom."
 # define ERR_COM "Erreur 05 : Erreur au commentaire."
 # define ERR_SIZE "Erreur 06 : champion trop grand."
@@ -33,8 +33,6 @@
 # define ERR_NBR_ARG "Erreur 08 : Pas assez d'argument."
 # define NO_LABEL "Erreur 09 : label inexistant "
 # define ERR_MALLOC "Erreur 10 : Problème d'allocation mémoire"
-# define ERR_NOFILE "Erreur 11 : le parametre n'est pas un fichier."
-# define ERR_NOCODE "Erreur 12 : le champion n'a pas de code."
 
 typedef struct			s_parsing
 {
@@ -151,5 +149,4 @@ unsigned int			write_label2(t_parsing *tmp, char *to_search, unsigned
 */
 void					free_all(t_asm *env);
 void					free_split(char **split);
-void					free_parsing_s(t_parsing *to_free);
 #endif

@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 12:05:29 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/07 12:04:13 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/05/03 09:13:36 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,13 @@ int	ft_live(char *line, int index)
 {
 	char *tmp;
 
-	if (!(tmp = ft_strsub(line, 0, search_char(line, ' '))))
-		msg_error(ERR_MALLOC, 0);
+	tmp = ft_strsub(line, 0, search_char(line, ' '));
 	if (ft_strcmp(tmp, "live") != 0)
 		return (0);
-	if (!(tmp = ft_strsub(line, 4, ft_strlen(line))))
-		msg_error(ERR_MALLOC, 0);
+	tmp = ft_strsub(line, 4, ft_strlen(line));
 	if (isdir(tmp) == 0)
 		msg_error(ERR_ARG, index);
-	ft_strdel(&tmp);
+	free(tmp);
 	return (1);
 }
 
@@ -37,13 +35,10 @@ int	ft_ld(char *line, int index)
 	char *tmp;
 	char **splited;
 
-	if (!(tmp = ft_strsub(line, 0, search_char(line, ' '))))
-		msg_error(ERR_MALLOC, 0);
+	tmp = ft_strsub(line, 0, search_char(line, ' '));
 	if (ft_strcmp(tmp, "ld") != 0)
 		return (0);
-	ft_strdel(&tmp);
-	if (!(tmp = ft_strsub(line, 2, ft_strlen(line))))
-		msg_error(ERR_MALLOC, 0);
+	tmp = ft_strsub(line, 2, ft_strlen(line));
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	clear_split(splited);
 	if (tab_len(splited) != 2)
@@ -52,7 +47,7 @@ int	ft_ld(char *line, int index)
 		msg_error(ERR_ARG, index);
 	if (isreg(splited[1]) == 0)
 		msg_error(ERR_ARG, index);
-	ft_strdel(&tmp);
+	free(tmp);
 	free_split(splited);
 	return (1);
 }
@@ -62,13 +57,10 @@ int	ft_st(char *line, int index)
 	char *tmp;
 	char **splited;
 
-	if (!(tmp = ft_strsub(line, 0, search_char(line, ' '))))
-		msg_error(ERR_MALLOC, 0);
+	tmp = ft_strsub(line, 0, search_char(line, ' '));
 	if (ft_strcmp(tmp, "st") != 0)
 		return (0);
-	ft_strdel(&tmp);
-	if (!(tmp = ft_strsub(line, 2, ft_strlen(line))))
-		msg_error(ERR_MALLOC, 0);
+	tmp = ft_strsub(line, 2, ft_strlen(line));
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	clear_split(splited);
 	if (tab_len(splited) != 2)
@@ -77,7 +69,7 @@ int	ft_st(char *line, int index)
 		msg_error(ERR_ARG, index);
 	if (isreg(splited[1]) == 0 && isindir(splited[1]) == 0)
 		msg_error(ERR_ARG, index);
-	ft_strdel(&tmp);
+	free(tmp);
 	free_split(splited);
 	return (1);
 }
@@ -87,13 +79,10 @@ int	ft_add(char *line, int index)
 	char *tmp;
 	char **splited;
 
-	if (!(tmp = ft_strsub(line, 0, search_char(line, ' '))))
-		msg_error(ERR_MALLOC, 0);
+	tmp = ft_strsub(line, 0, search_char(line, ' '));
 	if (ft_strcmp(tmp, "add") != 0)
 		return (0);
-	ft_strdel(&tmp);
-	if (!(tmp = ft_strsub(line, 3, ft_strlen(line))))
-		msg_error(ERR_MALLOC, 0);
+	tmp = ft_strsub(line, 3, ft_strlen(line));
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	clear_split(splited);
 	if (tab_len(splited) != 3)
@@ -101,7 +90,7 @@ int	ft_add(char *line, int index)
 	if (isreg(splited[0]) == 0 && isreg(splited[1]) == 0 &&
 		isreg(splited[2]) == 0)
 		msg_error(ERR_ARG, index);
-	ft_strdel(&tmp);
+	free(tmp);
 	free_split(splited);
 	return (1);
 }
@@ -111,13 +100,10 @@ int	ft_sub(char *line, int index)
 	char *tmp;
 	char **splited;
 
-	if (!(tmp = ft_strsub(line, 0, search_char(line, ' '))))
-		msg_error(ERR_MALLOC, 0);
+	tmp = ft_strsub(line, 0, search_char(line, ' '));
 	if (ft_strcmp(tmp, "sub") != 0)
 		return (0);
-	ft_strdel(&tmp);
-	if (!(tmp = ft_strsub(line, 3, ft_strlen(line))))
-		msg_error(ERR_MALLOC, 0);
+	tmp = ft_strsub(line, 3, ft_strlen(line));
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	clear_split(splited);
 	if (tab_len(splited) != 3)
@@ -125,7 +111,7 @@ int	ft_sub(char *line, int index)
 	if (isreg(splited[0]) == 0 && isreg(splited[1]) == 0 &&
 		isreg(splited[2]) == 0)
 		msg_error(ERR_ARG, index);
-	ft_strdel(&tmp);
+	free(tmp);
 	free_split(splited);
 	return (1);
 }

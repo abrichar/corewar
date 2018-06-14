@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 16:10:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/07 10:23:16 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/05/04 01:23:10 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ void				add_label(char *line, t_parsing **buff)
 	tmp2 = NULL;
 	if ((tmp = (t_parsing*)malloc(sizeof(t_parsing) * 1)))
 	{
-		if (!(tmp->content = ft_strdup(line)))
-			msg_error(ERR_MALLOC, 0);
+		tmp->content = ft_strdup(line);
 		tmp->size = 0;
 		tmp->label = 1;
 		tmp->next = NULL;
@@ -54,8 +53,7 @@ char				*re_write(char *instru)
 	char			*format;
 
 	i = search_char(instru, ' ');
-	if (!(format = ft_strsub(instru, 0, ft_strlen(instru))))
-		msg_error(ERR_MALLOC, 0);
+	format = ft_strsub(instru, 0, ft_strlen(instru));
 	j = i + 1;
 	while (++i < ft_strlen(instru))
 	{
@@ -94,17 +92,13 @@ void				add_instru(char *line, t_parsing **buff)
 {
 	t_parsing		*tmp;
 	char			*name;
-	char			*temp;
 
 	tmp = NULL;
 	name = NULL;
 	if ((tmp = (t_parsing*)malloc(sizeof(t_parsing) * 1)))
 	{
-		if (!(temp = ft_strdup(line)))
-			msg_error(ERR_MALLOC, 0);
 		tmp->content = re_write(ft_epur_str(ft_strdup(line)));
-		if(!(name = ft_strsub(tmp->content, 0, search_char(tmp->content, ' ') + 1)))
-			msg_error(ERR_MALLOC, 0);
+		name = ft_strsub(tmp->content, 0, search_char(tmp->content, ' ') + 1);
 		tmp->size = size_instru(tmp);
 		tmp->label = 0;
 		tmp->next = NULL;
@@ -112,7 +106,7 @@ void				add_instru(char *line, t_parsing **buff)
 	}
 	else
 		msg_error(ERR_MALLOC, 0);
-	ft_strdel(&name);
+	free(name);
 }
 
 /*
@@ -123,20 +117,14 @@ void				add_lab_and_instru(char *line, t_parsing **buff)
 {
 	int				i;
 	char			*sub;
-	char			*tmp;
 
 	i = search_char(line, ' ');
-	if (!(sub = ft_strsub(line, 0, i + 1)))
-		msg_error(ERR_MALLOC, 0);
-	tmp = ft_epur_str(sub);
-	add_label(tmp, buff);
-	ft_strdel(&sub);
-	ft_strdel(&tmp);
+	sub = ft_strsub(line, 0, i + 1);
+	sub = ft_epur_str(sub);
+	add_label(sub, buff);
+	free(sub);
 	sub = ft_strsub(line, i + 1, ft_strlen(line) - i);
-	if (!(sub = ft_strsub(line, i + 1, ft_strlen(line))))
-		msg_error(ERR_MALLOC, 0);
-	tmp = ft_epur_str(sub);
-	add_instru(tmp, buff);
-	ft_strdel(&sub);
-	ft_strdel(&tmp);
+	sub = ft_epur_str(sub);
+	add_instru(sub, buff);
+	free(sub);
 }

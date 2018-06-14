@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:58:03 by eliajin           #+#    #+#             */
-/*   Updated: 2018/06/14 19:09:13 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/04 02:55:28 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void			size_all(t_asm *env)
 		tmp->size_to_here = size_max;
 		tmp = tmp->next;
 	}
+	free(tmp);
 }
 
 /*
@@ -40,7 +41,7 @@ void				msg_error(char *msg, int index)
 	if (!index)
 		ft_printf("%s\n", msg);
 	else
-		ft_printf("erreur de syntax à la ligne : %d| --> %s\n", index, msg);
+		ft_printf("erreur de syntaxe à la ligne : %d| --> %s\n", index, msg);
 	exit(EXIT_FAILURE);
 }
 
@@ -72,14 +73,13 @@ static int			detect_errors(int argc, char *champ, t_asm *env)
 	x = ft_strlen(champ) - 1;
 	if (champ[x] != 's' || champ[x - 1] != '.')
 		msg_error(USAGE, 0);
-	if (!(tmp = ft_strsub(champ, 0, x - 1)))
-		msg_error(ERR_MALLOC, 0);
+	tmp = ft_strsub(champ, 0, x - 1);
 	env->champ_name = ft_strjoin(tmp, ".cor");
 	if ((fd = open(champ, O_RDONLY)) == -1)
 		msg_error(ERR_OPEN, 0);
 	if (close(fd) == -1)
 		msg_error(ERR_CLOSE, 0);
-	ft_strdel(&tmp);
+	free(tmp);
 	return (1);
 }
 
@@ -89,20 +89,13 @@ int					main(int argc, char **argv)
 
 	detect_errors(argc, argv[1], &env);
 	ft_init(&env);
-	ft_putstr("testing0\n");
 	parsing(argv[argc - 1], &env);
-	ft_putstr("testing1\n");
-	if (!env.buff)
-		msg_error(ERR_NOCODE, 0);
-	ft_putstr("testing2\n");
 	verif_size(&env);
-	ft_printf("size : %d\n", env.header->prog_size);
 	size_all(&env);
-	ft_putstr("testing3\n");
 	write_out(&env);
-	ft_putstr("testing4\n");
 	ft_printf("Writing output program to %s\n", env.champ_name);
 	free_all(&env);
+	sleep(5);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
