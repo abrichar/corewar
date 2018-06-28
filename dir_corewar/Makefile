@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mpascaud <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: kgricour <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/04/10 20:57:47 by mpascaud          #+#    #+#              #
-#    Updated: 2018/06/28 22:42:58 by kgricour         ###   ########.fr        #
+#    Created: 2018/04/10 20:57:47 by kgricour          #+#    #+#              #
+#    Updated: 2018/06/29 00:41:57 by kgricour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = gcc
 FLAG_NCURSES = -lncurses
 FLAG = -Wall -Wextra -Werror 
 INC_DIR = includes
-SRCS_DIR_ASM = srcs/
+SRCS_DIR_VM = srcs/
 OBJS_DIR = objs
 SRCS_NAME = corewar.c ft_check_champ.c ft_get_opt.c ft_process.c \
 			ft_malloc_vm.c ft_dump.c ft_tool_instruction.c ft_instruction.c\
@@ -27,7 +27,7 @@ OBJS_NAME = $(SRCS_NAME:.c=.o)
 LIB_DIR = libft/
 LIB = libftprintf.a
 
-SRCS = $(addprefix $(SRCS_DIR_ASM)/, $(SRCS_NAME))
+SRCS = $(addprefix $(SRCS_DIR_VM)/, $(SRCS_NAME))
 OBJS = $(addprefix $(OBJS_DIR)/, $(OBJS_NAME))
 
 INCLUDE = -I $(INC_DIR)
@@ -38,14 +38,23 @@ $(NAME): $(OBJS)
 	    Make -C $(LIB_DIR)
 		    $(CC) $(FLAG) $(FLAG_NCURSES) $^ -o $@ $(LIB_DIR)/$(LIB)
 
-$(OBJS_DIR)/%.o: $(SRCS_DIR_ASM)/%.c
+$(OBJS_DIR)/%.o: $(SRCS_DIR_VM)/%.c
 	    @mkdir -p $(OBJS_DIR)
 		    $(CC) $(FLAG) $(INCLUDE) -c $^ -o $@
 
 clean:
 	    $(RM) -r $(OBJS_DIR)
+		Make clean -C $(LIB_DIR)
 
 fclean: clean
 	    $(RM) $(NAME)
+		Make fclean -C $(LIB_DIR)
 
 re: fclean all
+
+
+norme:
+	norminette $(SRC)
+	norminette $(INC_DIR)
+	
+.PHONY : all clean fclean re

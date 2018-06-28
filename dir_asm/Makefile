@@ -6,13 +6,13 @@
 #    By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 18:10:12 by abrichar          #+#    #+#              #
-#    Updated: 2018/06/14 20:28:32 by abrichar         ###   ########.fr        #
+#    Updated: 2018/06/29 00:42:02 by kgricour         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = asm
 
-CFLAG = -Wall -Wextra -Werror -g
+CFLAG = -Wall -Wextra -Werror
 CPPFLAGS = -Iincludes
 
 SRC_NAME = main.c line.c parsing.c utilities.c dump_header.c \
@@ -55,3 +55,5 @@ re: fclean all
 norme:
 	norminette $(SRC)
 	norminette ./includes/asm.h
+
+.PHONY : all clean fclean re
