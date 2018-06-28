@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/06/05 22:30:08 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/06/28 02:31:15 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 ** Toutes les tailles sont en octets.
 ** On part du principe qu'un int fait 32 bits. Est-ce vrai chez vous ?
 */
+
 #ifndef OP_H
 # define OP_H
 
+# define REG_SIZE				1
 # define IND_SIZE				2
-# define REG_SIZE				4
-# define DIR_SIZE				REG_SIZE
+# define DIR_SIZE				4
 
+# define NUL_CODE				0
 # define REG_CODE				1
 # define DIR_CODE				2
 # define IND_CODE				3
@@ -48,8 +50,6 @@
 # define NBR_LIVE				21
 # define MAX_CHECKS				10
 
-typedef char	t_arg_type;
-
 # define T_REG					1
 # define T_DIR					2
 # define T_IND					4
@@ -66,21 +66,25 @@ typedef struct		s_header
 	unsigned int			prog_size;
 	char					comment[COMMENT_LENGTH + 1];
 	int						num_player;
+	int						pos_param;
 	int						addr_start;
+	int						lives_period;
 	unsigned char			*data;
 	struct s_header			*next;
+	struct s_header			*prev;
 }					t_header;
 
-typedef struct        s_op
+typedef struct		s_op
 {
 	char		name[5];
 	int			nb_params;
 	char		params_type[3];
-	int			id;
+	int			opcode;
 	int			cycles;
 	char		description[50];
-	int			acb;
-	int			label_size;
-}                    t_op;
+	int			ocp;
+	int			short_dir;
+	void		(*fonction)();
+}					t_op;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kgricour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 19:06:00 by kgricour          #+#    #+#             */
-/*   Updated: 2018/05/31 19:14:28 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/06/14 01:31:11 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int			ft_print(int fd, char *str)
 	i = 0;
 	while (str[i])
 	{
-		(str[i] == '\1') ? ft_putchar_fd(fd, 0) : ft_putchar_fd(fd, str[i]);
+		(str[i] == '\1') ? ft_putchar_fd(0, fd) : ft_putchar_fd(str[i], fd);
 		i++;
 	}
 	return (ft_strlen(str));

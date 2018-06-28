@@ -6,7 +6,7 @@
 /*   By: kgricour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 14:46:50 by kgricour          #+#    #+#             */
-/*   Updated: 2018/05/01 13:41:27 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/06/13 13:11:32 by mpascaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct	s_vars
 void			ft_putchar(char c);
 void			ft_putstr(const char *str);
 void			*ft_memset(void *s, int c, size_t n);
-void			ft_bzero(void *s, size_t n);
+void			ft_bzero(void *s, size_t n, int mode);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void			*ft_memmove(void *dst, const void *src, size_t len);

@@ -6,7 +6,7 @@
 /*   By: kgricour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 22:24:16 by kgricour          #+#    #+#             */
-/*   Updated: 2018/06/05 22:33:07 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/06/28 20:24:37 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,23 @@ void	ft_check_comment(int fd, t_header *header)
 	ft_strcpy(header->comment, (const char *)tmp);
 }
 
-void	ft_check_inst(int fd, t_header *header)
+int		ft_check_inst(int fd, t_header *header)
 {
 	unsigned char	tmp[1];
-	int				i;
+	unsigned int	i;
 
 	i = 0;
 	lseek(fd, 4, SEEK_CUR);
-	while (i < header->prog_size)
+	while (read(fd, &tmp[0], 1))
 	{
-		read(fd, &tmp[0], 1);
+		if (i >= header->prog_size)
+			return (-1);
 		header->data[i] = tmp[0];
 		i++;
 	}
+	if (i < header->prog_size)
+		return (-2);
+	else if (tmp[0] == '\n')
+		return (-3);
+	return (1);
 }
