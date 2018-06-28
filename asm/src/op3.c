@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 14:29:30 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/03 09:17:04 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/06/28 16:27:20 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ int	ft_sti(char *line, int index)
 		msg_error(ERR_ARG, index);
 	if (isreg(splited[2]) == 0 && isdir(splited[2]) == 0)
 		msg_error(ERR_ARG, index);
-	free(tmp);
-	free_split(splited);
+	if (tmp)
+		free(tmp);
+	if (splited)
+		free_split(splited);
 	return (1);
 }
 
@@ -46,7 +48,8 @@ int	ft_fork(char *line, int index)
 	tmp = ft_strsub(line, 4, ft_strlen(line));
 	if (isdir(tmp) == 0)
 		msg_error(ERR_ARG, index);
-	free(tmp);
+	if (tmp)
+		free(tmp);
 	return (1);
 }
 
@@ -66,8 +69,10 @@ int	ft_lld(char *line, int index)
 		msg_error(ERR_ARG, index);
 	if (isreg(splited[1]) == 0)
 		msg_error(ERR_ARG, index);
-	free(tmp);
-	free_split(splited);
+	if (tmp)
+		free(tmp);
+	if (splited)
+		free_split(splited);
 	return (1);
 }
 
@@ -90,8 +95,10 @@ int	ft_lldi(char *line, int index)
 		msg_error(ERR_ARG, index);
 	if (isreg(splited[2]) == 0)
 		msg_error(ERR_ARG, index);
-	free(tmp);
-	free_split(splited);
+	if (tmp)
+		free(tmp);
+	if (splited)
+		free_split(splited);
 	return (1);
 }
 
@@ -105,6 +112,7 @@ int	ft_lfork(char *line, int index)
 	tmp = ft_strsub(line, 5, ft_strlen(line));
 	if (isdir(tmp) == 0)
 		msg_error(ERR_ARG, index);
-	free(tmp);
+	if (tmp)
+		free(tmp);
 	return (1);
 }

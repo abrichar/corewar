@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 16:10:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/04 01:23:10 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/06/28 17:18:06 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,8 @@ void				add_instru(char *line, t_parsing **buff)
 	}
 	else
 		msg_error(ERR_MALLOC, 0);
-	free(name);
+	if (name)
+		free(name);
 }
 
 /*
@@ -122,9 +123,11 @@ void				add_lab_and_instru(char *line, t_parsing **buff)
 	sub = ft_strsub(line, 0, i + 1);
 	sub = ft_epur_str(sub);
 	add_label(sub, buff);
-	free(sub);
+	if (sub)
+		free(sub);
 	sub = ft_strsub(line, i + 1, ft_strlen(line) - i);
 	sub = ft_epur_str(sub);
 	add_instru(sub, buff);
-	free(sub);
+	if (sub)
+		free(sub);
 }

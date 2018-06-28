@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 00:17:52 by eliajin           #+#    #+#             */
-/*   Updated: 2018/06/14 20:16:13 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/06/28 17:18:33 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,13 @@ void		parsing(char *file, t_asm *env)
 		msg_error(ERR_OPEN, 0);
 	while ((ret = get_next_line(env->fd, &line)) > 0)
 	{
+		ft_printf("%s\n", line);
 		tmp = ft_epur_str(line);
 		check_line(tmp, line, env, index);
-		free(line);
-		free(tmp);
+		if (line)
+			free(line);
+		if (tmp)
+			free(tmp);
 		index++;
 	}
 	if (ret == -1)

@@ -1,0 +1,27 @@
+--> Quand le commentaire/le nom est sur plusieurs lignes
+	==> considération qu'un commentaire/nom soit sur une seule ligne.
+--> Si il y a ld%22 alors que ça doit s'écrire ld %22 avec un espace (avec n'importe quel opération) 
+	==> le code doit être bien ecrit
+--> TROP FREE ! (LEAK/SEGFAULT)
+	--> SEGFAULT --> :label
+		--> utilities.c --> indir --> no free de ptr
+
+--> Quand ';' a la fin de la ligne --> faire ça comme avec le # et les supprimer ? 
+	--> iburel (championship)
+	--> tbillard (championship)
+
+
+ok pour :
+
+- championship 
+-- adenis
+-- agregoir
+-- jaustry
+-- nolivier
+-- pzarmehr
+
+PAS OK :
+- championship
+-- gnebie
+-- iburel
+-- tbillard

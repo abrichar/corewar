@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 14:36:46 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 09:19:41 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/06/28 16:27:58 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ unsigned int	size_instru(t_parsing *tmp)
 	i = -1;
 	while (++i < tab_len(splited))
 		size_instru2(splited[i], &size, actual);
-	free(splited);
+	if (splited)
+		free(splited);
 	return (size);
 }
 

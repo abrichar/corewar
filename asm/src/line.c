@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 19:42:16 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/04 01:28:28 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/06/28 16:23:52 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ char	*rm_comment(char *line)
 		return (line);
 	tmp = ft_strsub(line, 0, i);
 	ret = ft_epur_str(tmp);
-	free(tmp);
+	if (tmp)
+		free(tmp);
 	return (ret);
 }
 
@@ -53,7 +54,8 @@ char	*rm_comment_header(char *line)
 			return (NULL);
 	}
 	ret = ft_strsub(line, 0, i + len + 1);
-	free(tmp);
+	if (tmp)
+		free(tmp);
 	return (ret);
 }
 
@@ -74,9 +76,11 @@ int		is_header(char *line, char *macro)
 		return (0);
 	tmp = ft_strsub(rm_comment, ft_strlen(macro), ft_strlen(rm_comment));
 	tmp = ft_epur_str(tmp);
-	free(rm_comment);
+	if (rm_comment)
+		free(rm_comment);
 	if (tmp[0] != '"' || tmp[ft_strlen(tmp) - 1] != '"')
 		return (0);
-	free(tmp);
+	if (tmp)
+		free(tmp);
 	return (1);
 }
