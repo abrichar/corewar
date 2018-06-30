@@ -51,7 +51,7 @@ void	ft_show_info_vm(t_counters *c)
 {
 	attron(COLOR_PAIR(30));
 	mvprintw(71, 3, "CYCLE : %-30d  CYCLE_TO_DIE : %-30d ",
-	c->total_cycles, c->cycle_to_die);
+	c->total_cycles + 1, c->cycle_to_die);
 	printw("MAX_CHECKS : %-30d", MAX_CHECKS - c->non_decrementation);
 	printw("LAST LIVE : player %-30d", c->last_live);
 	printw("LIVE : %d", c->lives);

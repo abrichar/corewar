@@ -79,14 +79,17 @@ int		ft_get_noopt(t_header *h, int argc, char **argv, t_param *param)
 	return (nbr_check_player);
 }
 
-void	ft_init_header_list(int *i, t_param *pm, t_header **h, t_header *h_iter)
+void	ft_init_header_list(t_param *pm, t_header **h, t_header *h_iter)
 {
-	while (*i < pm->nb_player)
+	int i;
+
+	i = 1;
+	while (i < pm->nb_player)
 	{
 		(h_iter)->prev = ft_create_new_header(h_iter);
 		*h = (h_iter)->prev;
 		h_iter = (h_iter)->prev;
-		(*i)++;
+		i++;
 	}
 }
 
@@ -94,26 +97,26 @@ int		ft_nb_player(t_param *param, t_header **header)
 {
 	int			i;
 	int			check_arg;
+	int			max_player;
 	t_header	*header_last;
 	t_header	*header_iter;
 
 	header_last = *header;
 	header_iter = *header;
 	param->nb_player = 0;
+	max_player = 0;
 	check_arg = 1;
-	i = 1;
-	while (i < param->argc)
-	{
+	i = 0;
+	while (++i < param->argc)
 		if (ft_strstr(param->argv[i], ".cor"))
 			param->nb_player++;
-		i++;
-	}
-	i = 1;
-	ft_init_header_list(&i, param, header, header_iter);
+	ft_init_header_list(param, header, header_iter);
 	header_iter = header_last;
 	check_arg += (ft_get_player_opt(header_last, param->argc, param->argv) * 3);
+	max_player = check_arg;
 	check_arg += ft_get_noopt(header_last, param->argc, param->argv, param);
-	if (!ft_check_dump(param, &check_arg) || check_arg != param->argc)
+	max_player = (max_player / 3) + (check_arg - max_player);
+	if (!ft_check_dump(param, &check_arg) || check_arg != param->argc || max_player > MAX_PLAYERS)
 		return (0);
 	return (1);
 }

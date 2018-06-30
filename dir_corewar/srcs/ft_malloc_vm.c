@@ -77,7 +77,7 @@ t_header	*ft_init(t_param *param, t_header **header, int ac, char **av)
 	param->fd = 0;
 	param->argc = ac;
 	param->argv = av;
-	param->dump = 0;
+	param->dump = -1;
 	param->ncurse = 0;
 	return (header_first);
 }

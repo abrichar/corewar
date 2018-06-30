@@ -91,22 +91,22 @@ void	ft_vm(t_processes *p, t_counters *c, t_param *pm, t_header *h)
 	while (ft_at_least_one_process(p) == 1 && c->cycle_to_die >= 0)
 	{
 		ft_process(p, c, pm, h);
-		if (pm->dump == 0 && pm->ncurse == 1)
+		if (pm->dump == -1 && pm->ncurse == 1)
 			ft_ncurse(c, p->next, pm, h);
 		if ((c->cycles % c->cycle_to_die) == 0 && c->cycles != 0)
 		{
 			ft_check_lives(p, c);
 			ft_cycle_to_die(c);
 		}
-		c->cycles++;
-		c->total_cycles++;
-		if (c->total_cycles == pm->dump)
+		if (c->total_cycles == pm->dump && pm->dump != -1)
 		{
 			endwin();
 			pm->ncurse = 0;
 			ft_dump(c, p);
 			return ;
 		}
+		c->cycles++;
+		c->total_cycles++;
 	}
 	ft_show_winner(c, h, pm);
 }

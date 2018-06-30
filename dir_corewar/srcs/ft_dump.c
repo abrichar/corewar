@@ -105,7 +105,8 @@ int			ft_check_dump(t_param *pm, int *check_arg)
 		if (ft_strstr(pm->argv[i], "-dump") && i + 1 < pm->argc &&
 		ft_isdigit(pm->argv[i + 1][0]))
 		{
-			pm->dump = ft_atoi(pm->argv[i + 1]);
+			pm->dump = ft_atoi(pm->argv[i + 1]) - 1;
+			pm->dump = (pm->dump < 0) ? 0 : pm->dump;
 			*check_arg += 2;
 		}
 		else if (ft_strstr(pm->argv[i], "-dump") && i + 1 >= pm->argc)
@@ -134,7 +135,7 @@ void		ft_dump(t_counters *c, t_processes *p)
 	' ', TITLE);
 	ft_printf_fd(1, "\033[47;37;05m%26c\033[00m\n", ' ');
 	ft_printf_fd(1, "\033[47;37;05m \033[00m ");
-	while (i < MEM_SIZE && c->total_cycles > 0)
+	while (i < MEM_SIZE && c->total_cycles >= 0)
 	{
 		ft_printf_fd(1, "\033[%d;01m%02x\033[00m ", c->color[i], c->vm[i]);
 		if (i % 32 == 31 & i != 0)
