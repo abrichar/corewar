@@ -6,7 +6,7 @@
 #    By: mpascaud <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/10 20:57:47 by mpascaud          #+#    #+#              #
-#    Updated: 2018/06/29 00:55:59 by kgricour         ###   ########.fr        #
+#    Updated: 2018/07/03 01:06:07 by kgricour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,7 @@ ASM = asm
 DIR_ASM = dir_asm/
 DIR_VM = dir_corewar/
 
-all:
-	    Make -C $(DIR_ASM)
-		Make -C $(DIR_VM)
-		mv $(DIR_ASM)$(ASM) .
-		mv $(DIR_VM)$(VM) .	
+all: $(ASM) $(VM)
 
 $(ASM):
 	    Make -C $(DIR_ASM)
