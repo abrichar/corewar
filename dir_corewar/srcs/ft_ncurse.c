@@ -6,7 +6,7 @@
 /*   By: kgricour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 00:12:17 by kgricour          #+#    #+#             */
-/*   Updated: 2018/06/28 00:44:48 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/07/02 23:25:41 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_pause(int key, int *speed, int *delay, t_counters *c)
 				break ;
 			}
 			else if (key == 32)
-				break;
+				break ;
 			else if (key == KEY_UP || key == KEY_DOWN)
 				ft_speed(key, speed, delay);
 		}
@@ -81,7 +81,7 @@ void	ft_delay(int key, int *speed, int *delay, t_counters *c)
 		if (key == KEY_LEFT)
 			ft_pause(key, speed, delay, c);
 		else if (key == 32)
-			break;
+			break ;
 		if (key != 32)
 			usleep(1);
 		i++;
@@ -98,6 +98,7 @@ void	ft_ncurse(t_counters *c, t_processes *p, t_param *param, t_header *h)
 	key = 0;
 	boite = subwin(stdscr, 75, 197, 0, 0);
 	keypad(stdscr, TRUE);
+	noecho();
 	curs_set(0);
 	ft_init_color_pc(c, p);
 	box(boite, ACS_VLINE, ACS_HLINE);

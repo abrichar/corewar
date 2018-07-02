@@ -6,7 +6,7 @@
 /*   By: kgricour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 18:09:52 by kgricour          #+#    #+#             */
-/*   Updated: 2018/06/28 20:23:52 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/07/03 00:38:21 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int			ft_check_player(int fd, t_header *h)
 	ft_check_name(fd, h);
 	ft_check_nbr_inst(fd, h);
 	if (h->prog_size > (MEM_SIZE / 6))
-		return (0);
+		return (-3);
 	if (!(h->data = (unsigned char *)malloc(sizeof(unsigned char) *
 	(h->prog_size + 1))))
 		return (0);
@@ -62,8 +62,6 @@ int			ft_check_player(int fd, t_header *h)
 		return (-1);
 	else if (ret_inst == -2)
 		return (-2);
-	else if (ret_inst == -3)
-		return (-3);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: kgricour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/28 00:30:06 by kgricour          #+#    #+#             */
-/*   Updated: 2018/06/28 00:37:40 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/07/02 23:19:29 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ void	ft_there_is_win(t_param *pm, t_header *h, t_counters *c)
 		printw("%d (%s)", c->last_live, h->prog_name);
 		attron(COLOR_PAIR(30));
 		printw(" a gagne !");
+		mvprintw(71, 43, "CYCLE_TO_DIE : 0  ");
 		refresh();
 		while (1)
 		{
 			key = getch();
-			if (key == KEY_RIGHT)
+			if (key == 81 || key == 113)
 				break ;
 		}
 		endwin();
@@ -58,13 +59,14 @@ void	ft_there_isnt_win(t_param *pm)
 	key = 0;
 	if (pm->ncurse == 1)
 	{
+		mvprintw(71, 43, "CYCLE_TO_DIE : 0  ");
 		attron(COLOR_PAIR(31));
 		mvprintw(73, 43, "Ouups ! Il n'y a pas de gagnant...");
 		refresh();
 		while (1)
 		{
 			key = getch();
-			if (key == KEY_RIGHT)
+			if (key == 81 || key == 113)
 				break ;
 		}
 		endwin();

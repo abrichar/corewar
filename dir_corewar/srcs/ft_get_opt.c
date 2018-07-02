@@ -6,7 +6,7 @@
 /*   By: kgricour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 19:54:32 by kgricour          #+#    #+#             */
-/*   Updated: 2018/06/28 14:25:43 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/07/02 23:26:38 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,8 @@ int		ft_nb_player(t_param *param, t_header **header)
 	max_player = check_arg;
 	check_arg += ft_get_noopt(header_last, param->argc, param->argv, param);
 	max_player = (max_player / 3) + (check_arg - max_player);
-	if (!ft_check_dump(param, &check_arg) || check_arg != param->argc || max_player > MAX_PLAYERS)
+	if (!ft_check_dump(param, &check_arg) || check_arg != param->argc
+	|| max_player > MAX_PLAYERS)
 		return (0);
 	return (1);
 }
