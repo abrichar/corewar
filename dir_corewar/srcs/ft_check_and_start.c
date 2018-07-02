@@ -21,6 +21,7 @@ static void	ft_usage(void)
 	ft_printf_fd(2, "      : %C for speed down\n", L'↓');
 	ft_printf_fd(2, "      : %C for game start\n", L'→');
 	ft_printf_fd(2, "      : %C for game pause\n", L'←');
+	ft_printf_fd(2, "      : ' ' for step by step\n");
 }
 
 void		ft_init_period_lives(t_counters *c)

@@ -48,13 +48,21 @@ void	ft_speed(int key, int *speed, int *delay)
 
 void	ft_pause(int key, int *speed, int *delay, t_counters *c)
 {
-	if (key == KEY_LEFT || c->total_cycles == 0)
+	static int step = 0;
+
+	if (key == KEY_LEFT || c->total_cycles == 0 || step == 1)
 	{
+		step = 1;
 		while (1)
 		{
 			key = getch();
 			if (key == KEY_RIGHT)
+			{
+				step = 0;
 				break ;
+			}
+			else if (key == 32)
+				break;
 			else if (key == KEY_UP || key == KEY_DOWN)
 				ft_speed(key, speed, delay);
 		}
@@ -72,7 +80,10 @@ void	ft_delay(int key, int *speed, int *delay, t_counters *c)
 		ft_speed(key, speed, delay);
 		if (key == KEY_LEFT)
 			ft_pause(key, speed, delay, c);
-		usleep(1);
+		else if (key == 32)
+			break;
+		if (key != 32)
+			usleep(1);
 		i++;
 	}
 }
