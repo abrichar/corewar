@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 12:48:10 by eliajin           #+#    #+#             */
-/*   Updated: 2018/06/28 16:23:09 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/07/04 00:17:40 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,11 @@ void			dump_header(char *line, t_asm *env, char *macro, int index)
 	i = search_char(line, '"') + 1;
 	tmp = ft_strsub(line, i, ft_strlen(line));
 	j = search_char(tmp, '"');
-	sub = ft_strsub(tmp, 0, j);
+	if (j > -1)
+	{
+		sub = ft_strsub(tmp, 0, j);
+		check_size(sub, env, macro, index);
+	}
 	if (tmp)
 		free(tmp);
-	check_size(sub, env, macro, index);
 }

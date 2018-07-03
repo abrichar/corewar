@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 13:37:29 by eliajin           #+#    #+#             */
-/*   Updated: 2018/07/03 17:56:42 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/07/03 19:55:02 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ int	ft_and(char *line, int index)
 	char	*tmp;
 	char	**splited;
 	char	*ptr_trash;//<------------------kev
-	int		i;//<------------------kev
 
-	i = 0; //<------------------kev
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
 	ptr_trash = tmp;//<------------------kev
 	if (ft_strcmp(tmp, "and") != 0)
@@ -43,11 +41,6 @@ int	ft_and(char *line, int index)
 		msg_error(ERR_ARG, index);
 	if (tmp)
 		free(tmp);
-	while (splited[i])//<------------------kev
-	{
-		free(splited[i]);//<------------------kev
-		i++;//<------------------kev
-	}
 	if (splited)
 		free_split(splited);
 	return (1);
@@ -94,9 +87,7 @@ int	ft_xor(char *line, int index)
 	char	*tmp;
 	char	**splited;
 	char	*ptr_trash;//<------------------kev
-	int		i;//<------------------kev
 
-	i = 0;//<------------------kev
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
 	ptr_trash = tmp;//<------------------kev
 	if (ft_strcmp(tmp, "xor") != 0)
@@ -119,11 +110,6 @@ int	ft_xor(char *line, int index)
 		msg_error(ERR_ARG, index);
 	if (tmp)
 		free(tmp);
-	while (splited[i])//<------------------kev
-	{
-		free(splited[i]);//<------------------kev
-		i++;//<------------------kev
-	}
 	if (splited)
 		free_split(splited);
 	return (1);

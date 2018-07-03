@@ -1,5 +1,5 @@
 .name "our_champ"
-.comment "champ by kgricour - mpascaud - abrichar - cholm"
+.comment "champ by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholmamp by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholmamp by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholmamp by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholmamp by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholmamp by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpascaud - abrichar - cholm champ by kgricour - mpa"
 
 erase1:
 	sti r1, %:live1, %1

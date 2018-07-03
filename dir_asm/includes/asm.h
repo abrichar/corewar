@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/06/14 20:28:06 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/07/03 21:13:04 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void					parsing(char *file, t_asm *env);
 /*
 ** utilities.c
 */
+int						search_str(char **line, char c, t_asm *env); //<---------------- rajout env par kev
 int						search_char(char *line, char c);
 int						ft_is_number(char *line, int begin);
 int						isreg(char *line);

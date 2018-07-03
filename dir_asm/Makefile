@@ -6,13 +6,13 @@
 #    By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 18:10:12 by abrichar          #+#    #+#              #
-#    Updated: 2018/07/03 17:08:00 by kgricour         ###   ########.fr        #
+#    Updated: 2018/07/03 22:39:05 by kgricour         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = asm
 
-CFLAG = -g #-fsanitize=address -fsanitize=undefined # -Wall -Wextra -Werror 
+CFLAG = -g -fsanitize=address -fsanitize=undefined # -Wall -Wextra -Werror 
 CPPFLAGS = -Iincludes
 
 SRC_NAME = main.c line.c parsing.c utilities.c dump_header.c \

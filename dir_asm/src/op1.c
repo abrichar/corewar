@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 12:05:29 by eliajin           #+#    #+#             */
-/*   Updated: 2018/07/03 05:49:32 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/07/03 20:17:31 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,10 @@ int	ft_live(char *line, int index)
 
 int	ft_ld(char *line, int index)
 {
-	char *tmp;
-	char **splited;
+	char	*tmp;
+	char	**splited;
 	char	*ptr_trash;//<------------------kev
-	int		i;//<------------------kev
 
-	i = 0; //<------------------kev
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
 	ptr_trash = tmp;//<------------------kev
 	if (ft_strcmp(tmp, "ld") != 0)
@@ -63,14 +61,9 @@ int	ft_ld(char *line, int index)
 	if (isreg(splited[1]) == 0)
 		msg_error(ERR_ARG, index);
 	if (tmp)
-		free(tmp);
-	while (splited[i])//<------------------kev
-	{
-		free(splited[i]);//<------------------kev
-		i++;//<------------------kev
-	}
+		free(tmp);	
 	if (splited)
-		free_split(splited);
+	free_split(splited);
 	return (1);
 }
 
@@ -101,11 +94,6 @@ int	ft_st(char *line, int index)
 		msg_error(ERR_ARG, index);
 	if (tmp)
 		free(tmp);
-	while (splited[i])//<------------------kev
-	{
-		free(splited[i]);//<------------------kev
-		i++;//<------------------kev
-	}
 	if (splited)
 		free_split(splited);
 	return (1);
@@ -116,9 +104,7 @@ int	ft_add(char *line, int index)
 	char	*tmp;
 	char	**splited;
 	char	*ptr_trash;//<------------------kev
-	int		i;//<------------------kev
 
-	i = 0; //<------------------kev
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
 	ptr_trash = tmp;//<------------------kev
 	if (ft_strcmp(tmp, "add") != 0)
@@ -137,11 +123,6 @@ int	ft_add(char *line, int index)
 		msg_error(ERR_ARG, index);
 	if (tmp)
 		free(tmp);
-	while (splited[i])//<------------------kev
-	{
-		free(splited[i]);//<------------------kev
-		i++;//<------------------kev
-	}
 	if (splited)
 		free_split(splited);
 	return (1);
@@ -152,9 +133,7 @@ int	ft_sub(char *line, int index)
 	char *tmp;
 	char **splited;
 	char	*ptr_trash;//<------------------kev
-	int		i;//<------------------kev
 
-	i = 0; //<------------------kev
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
 	ptr_trash = tmp;//<------------------kev
 	if (ft_strcmp(tmp, "sub") != 0)
@@ -173,11 +152,6 @@ int	ft_sub(char *line, int index)
 		msg_error(ERR_ARG, index);
 	if (tmp)
 		free(tmp);
-	while (splited[i])//<------------------kev
-	{
-		free(splited[i]);//<------------------kev
-		i++;//<------------------kev
-	}
 	if (splited)
 		free_split(splited);
 	return (1);

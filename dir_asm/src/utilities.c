@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 00:17:45 by eliajin           #+#    #+#             */
-/*   Updated: 2018/07/03 04:52:35 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/07/04 00:14:18 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	search_char(char *line, char c)
 	int i;
 
 	i = -1;
-	printf("[%s]\n", line);
 	while (line[++i] != '\0')
 	{
 		if (line[i] == c)
