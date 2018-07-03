@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 13:10:56 by abrichar          #+#    #+#             */
-/*   Updated: 2016/11/29 23:24:59 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/07/03 17:15:18 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	if (s1 != 0 && s2 != 0)
 	{
 		length = ft_strlen(s1) + ft_strlen(s2);
-		if (!(char *)malloc(sizeof(char) * length + 1))
+		if (!(strnew = (char *)malloc(sizeof(char) * length + 1)))
 			return (0);
-		strnew = (char *)malloc(sizeof(char) * length + 1);
 		while (s1[index1] != '\0')
 		{
 			strnew[index1] = s1[index1];

@@ -6,12 +6,12 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 16:24:50 by eliajin           #+#    #+#             */
-/*   Updated: 2018/06/28 16:28:47 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/07/03 17:50:06 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
+/*
 void		clear_split(char **splited)
 {
 	int i;
@@ -19,6 +19,22 @@ void		clear_split(char **splited)
 	i = -1;
 	while (++i < tab_len(splited))
 		splited[i] = ft_epur_str(splited[i]);
+}
+*/
+
+/*modif free clear_split kev*/
+void		clear_split(char **splited)
+{
+	int 	i;
+	char	*tmp;
+
+	i = -1;
+	while (++i < tab_len(splited))
+	{
+		tmp = splited[i];
+		splited[i] = ft_epur_str(splited[i]);
+		free(tmp);
+	}
 }
 
 int			is_label(char *param)

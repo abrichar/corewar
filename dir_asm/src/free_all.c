@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 00:49:32 by abrichar          #+#    #+#             */
-/*   Updated: 2018/06/28 17:40:53 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/07/03 17:11:22 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	free_all(t_asm *env)
 		free(tmp);
 		tmp = next;
 	}
+	free(env->champ_name);
 	env->buff = NULL;
 }
 
@@ -35,4 +36,5 @@ void	free_split(char **split)
 	i = -1;
 	while (++i < tab_len(split))
 		free(split[i]);
+	free(split);
 }

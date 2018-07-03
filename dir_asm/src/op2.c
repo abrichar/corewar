@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 13:37:29 by eliajin           #+#    #+#             */
-/*   Updated: 2018/06/28 16:26:34 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/07/03 17:56:42 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,21 @@
 
 int	ft_and(char *line, int index)
 {
-	char *tmp;
-	char **splited;
+	char	*tmp;
+	char	**splited;
+	char	*ptr_trash;//<------------------kev
+	int		i;//<------------------kev
 
+	i = 0; //<------------------kev
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
+	ptr_trash = tmp;//<------------------kev
 	if (ft_strcmp(tmp, "and") != 0)
+	{
+		free(tmp);//<------------------kev
 		return (0);
+	}
 	tmp = ft_strsub(line, 3, ft_strlen(line));
+	free(ptr_trash);//<------------------kev
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	clear_split(splited);
 	if (tab_len(splited) != 3)
@@ -35,6 +43,11 @@ int	ft_and(char *line, int index)
 		msg_error(ERR_ARG, index);
 	if (tmp)
 		free(tmp);
+	while (splited[i])//<------------------kev
+	{
+		free(splited[i]);//<------------------kev
+		i++;//<------------------kev
+	}
 	if (splited)
 		free_split(splited);
 	return (1);
@@ -42,13 +55,21 @@ int	ft_and(char *line, int index)
 
 int	ft_or(char *line, int index)
 {
-	char *tmp;
-	char **splited;
+	char	*tmp;
+	char	**splited;
+	char	*ptr_trash;//<------------------kev
+	int		i;
 
+	i = 0; //<------------------kev
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
+	ptr_trash = tmp;//<------------------kev
 	if (ft_strcmp(tmp, "or") != 0)
+	{
+		free(tmp);//<------------------kev
 		return (0);
+	}
 	tmp = ft_strsub(line, 2, ft_strlen(line));
+	free(ptr_trash);//<------------------kev
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	clear_split(splited);
 	if (tab_len(splited) != 3)
@@ -70,13 +91,21 @@ int	ft_or(char *line, int index)
 
 int	ft_xor(char *line, int index)
 {
-	char *tmp;
-	char **splited;
+	char	*tmp;
+	char	**splited;
+	char	*ptr_trash;//<------------------kev
+	int		i;//<------------------kev
 
+	i = 0;//<------------------kev
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
+	ptr_trash = tmp;//<------------------kev
 	if (ft_strcmp(tmp, "xor") != 0)
+	{
+		free(tmp);//<------------------kev
 		return (0);
+	}
 	tmp = ft_strsub(line, 3, ft_strlen(line));
+	free(ptr_trash);//<------------------kev
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	if (tab_len(splited) != 3)
 		msg_error(ERR_NBR_ARG, index);
@@ -90,6 +119,11 @@ int	ft_xor(char *line, int index)
 		msg_error(ERR_ARG, index);
 	if (tmp)
 		free(tmp);
+	while (splited[i])//<------------------kev
+	{
+		free(splited[i]);//<------------------kev
+		i++;//<------------------kev
+	}
 	if (splited)
 		free_split(splited);
 	return (1);
@@ -97,12 +131,18 @@ int	ft_xor(char *line, int index)
 
 int	ft_zjmp(char *line, int index)
 {
-	char *tmp;
+	char	*tmp;
+	char	*ptr_trash;//<--------------------kev
 
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
+	ptr_trash = tmp;//<--------------------kev
 	if (ft_strcmp(tmp, "zjmp") != 0)
+	{
+		free(tmp);//<--------------------kev
 		return (0);
+	}
 	tmp = ft_strsub(line, 4, ft_strlen(line));
+	free(ptr_trash);//<--------------------kev
 	if (isdir(tmp) == 0)
 		msg_error(ERR_ARG, index);
 	if (tmp)
@@ -112,13 +152,21 @@ int	ft_zjmp(char *line, int index)
 
 int	ft_ldi(char *line, int index)
 {
-	char *tmp;
-	char **splited;
+	char	*tmp;
+	char	**splited;
+	char	*ptr_trash;//<------------------kev
+	int		i;//<------------------kev
 
+	i = 0;//<------------------kev
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
+	ptr_trash = tmp;//<------------------kev
 	if (ft_strcmp(tmp, "ldi") != 0)
+	{
+		free(tmp);//<------------------kev
 		return (0);
+	}
 	tmp = ft_strsub(line, 3, ft_strlen(line));
+	free(ptr_trash);//<------------------kev
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	if (tab_len(splited) != 3)
 		msg_error(ERR_NBR_ARG, index);

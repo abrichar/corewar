@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 06:31:50 by abrichar          #+#    #+#             */
-/*   Updated: 2018/06/28 16:48:33 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/07/03 18:11:58 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ unsigned int		write_label2(t_parsing *tmp, char *to_search,
 			break ;
 		if (tmp->next == NULL)
 			msg_error(NO_LABEL, 0);
+		free(content);
 		tmp = tmp->next;
 	}
 	pos = (tmp->size_to_here - size_to_here);

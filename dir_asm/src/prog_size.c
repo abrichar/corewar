@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 14:36:46 by abrichar          #+#    #+#             */
-/*   Updated: 2018/06/28 16:27:58 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/07/03 18:01:13 by kgricour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,36 @@ static void		size_instru2(char *param, unsigned int *size, t_op actual)
 unsigned int	size_instru(t_parsing *tmp)
 {
 	char			**splited;
+	char			*str_sub;//<-----------------------kev
+	char			**ptr_trash;//<---------------kev
 	unsigned int	size;
 	int				i;
 	t_op			actual;
 
 	size = 0;
+	str_sub = NULL;
 	i = search_char(tmp->content, ' ');
 	size += 1;
-	actual = find_opcode(ft_strsub(tmp->content, 0, i));
+	str_sub = ft_strsub(tmp->content, 0, i);
+	actual = find_opcode(str_sub);
+	free(str_sub);
 	if (actual.opcode != 1 && actual.opcode != 9 &&
 		actual.opcode != 12 && actual.opcode != 15)
 		size += 1;
-	splited = ft_strsplit(ft_strsub(tmp->content, i + 1,
-									ft_strlen(tmp->content)), ',');
+	str_sub = ft_strsub(tmp->content, i + 1, ft_strlen(tmp->content)); 
+	splited = ft_strsplit(str_sub, ',');//<-----------------------kev
+	ptr_trash = splited; //<---------------kev
+	free(str_sub);//<---------------kev
 	clear_split(splited);
 	i = -1;
 	while (++i < tab_len(splited))
 		size_instru2(splited[i], &size, actual);
+	i = 0;
+	while (ptr_trash[i])//<---------------kev
+	{
+		free(ptr_trash[i]);//<---------------kev
+		i++;//<---------------kev
+	}
 	if (splited)
 		free(splited);
 	return (size);
