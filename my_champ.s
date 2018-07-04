@@ -34,12 +34,12 @@ live7:
 live8:
 	live %7
 	st r2, :erase1
-	st r2, :erase2
+	st r2, :erase2 #
 	st r2, :erase3
 	st r2, :erase4
 	st r2, :erase5
 	st r2, :erase6
-	st r2, :erase7
+	st r2, :erase7				;
 	st r2, :erase8
 	ld %777, r3
 	zjmp %:live1

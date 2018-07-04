@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 19:42:16 by eliajin           #+#    #+#             */
-/*   Updated: 2018/07/04 02:53:18 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/07/04 03:50:40 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,16 @@
 char	*rm_comment(char *line)
 {
 	int		i;
+	int		j;
 	char	*ret;
 	char	*tmp;
 
 	i = search_char(line, '#');
-	if (i < 0)
+	j = search_char(line, ';');
+	if (i < 0 && j < 0)
 		return (line);
+	if (i < 0)
+		i = j;
 	tmp = ft_strsub(line, 0, i);
 	ret = ft_epur_str(tmp);
 	if (tmp)
