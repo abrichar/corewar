@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 22:25:42 by eliajin           #+#    #+#             */
-/*   Updated: 2018/07/03 05:21:44 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/07/04 02:51:57 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,19 @@
 static unsigned int		write_octetcodage(t_op actual, char *arg)
 {
 	char			**splited;
-	char			**ptr_trash;//<---------------kev
+	char			**ptr_trash;
 	unsigned int	param1;
 	unsigned int	param2;
 	unsigned int	param3;
-	int				i;//<---------------kev
+	int				i;
 
 	param1 = 0;
 	param2 = 0;
 	param3 = 0;
-	i = 0;//<---------------kev
+	i = 0;
 	splited = ft_strsplit(arg, SEPARATOR_CHAR);
-	ptr_trash = splited;//<---------------kev
+	ptr_trash = splited;
 	clear_split(splited);
-	while (ptr_trash[i])//<---------------kev
-	{
-		free(ptr_trash[i]);//<---------------kev
-		i++;//<---------------kev
-	}
 	if (actual.opcode != 1 && actual.opcode != 9 && actual.opcode != 12
 		&& actual.opcode != 15)
 	{
@@ -42,6 +37,11 @@ static unsigned int		write_octetcodage(t_op actual, char *arg)
 			param2 = check_param(splited[1]) << 4;
 		if (actual.nb_arg == 3)
 			param3 = check_param(splited[2]) << 2;
+	}
+	while (ptr_trash[i])
+	{
+		free(ptr_trash[i]);
+		i++;
 	}
 	if (splited)
 		free(splited);

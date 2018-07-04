@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 12:05:29 by eliajin           #+#    #+#             */
-/*   Updated: 2018/07/03 20:17:31 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/07/04 02:54:33 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 int	ft_live(char *line, int index)
 {
 	char	*tmp;
-	char	*ptr_trash;//<------------------kev
+	char	*ptr_trash;
 
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
-	ptr_trash = tmp;//<------------------kev
+	ptr_trash = tmp;
 	if (ft_strcmp(tmp, "live") != 0)
 	{
-		free(tmp);//<------------------kev
+		free(tmp);
 		return (0);
 	}
 	tmp = ft_strsub(line, 4, ft_strlen(line));
-	free(ptr_trash);//<------------------kev
+	free(ptr_trash);
 	if (isdir(tmp) == 0)
 		msg_error(ERR_ARG, index);
 	if (tmp)
@@ -41,17 +41,17 @@ int	ft_ld(char *line, int index)
 {
 	char	*tmp;
 	char	**splited;
-	char	*ptr_trash;//<------------------kev
+	char	*ptr_trash;
 
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
-	ptr_trash = tmp;//<------------------kev
+	ptr_trash = tmp;
 	if (ft_strcmp(tmp, "ld") != 0)
 	{
-		free(tmp);//<------------------kev
+		free(tmp);
 		return (0);
 	}
 	tmp = ft_strsub(line, 2, ft_strlen(line));
-	free(ptr_trash);//<------------------kev
+	free(ptr_trash);
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	clear_split(splited);
 	if (tab_len(splited) != 2)
@@ -61,7 +61,7 @@ int	ft_ld(char *line, int index)
 	if (isreg(splited[1]) == 0)
 		msg_error(ERR_ARG, index);
 	if (tmp)
-		free(tmp);	
+		free(tmp);
 	if (splited)
 	free_split(splited);
 	return (1);
@@ -71,19 +71,19 @@ int	ft_st(char *line, int index)
 {
 	char	*tmp;
 	char	**splited;
-	char	*ptr_trash;//<------------------kev
-	int		i;//<------------------kev
+	char	*ptr_trash;
+	int		i;
 
-	i = 0; //<------------------kev
+	i = 0;
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
-	ptr_trash = tmp;//<------------------kev
+	ptr_trash = tmp;
 	if (ft_strcmp(tmp, "st") != 0)
 	{
-		free(tmp);//<------------------kev
+		free(tmp);
 		return (0);
 	}
 	tmp = ft_strsub(line, 2, ft_strlen(line));
-	free(ptr_trash);//<------------------kev
+	free(ptr_trash);
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	clear_split(splited);
 	if (tab_len(splited) != 2)
@@ -103,17 +103,17 @@ int	ft_add(char *line, int index)
 {
 	char	*tmp;
 	char	**splited;
-	char	*ptr_trash;//<------------------kev
+	char	*ptr_trash;
 
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
-	ptr_trash = tmp;//<------------------kev
+	ptr_trash = tmp;
 	if (ft_strcmp(tmp, "add") != 0)
 	{
-		free(tmp);//<------------------kev
+		free(tmp);
 		return (0);
 	}
 	tmp = ft_strsub(line, 3, ft_strlen(line));
-	free(ptr_trash);//<------------------kev
+	free(ptr_trash);
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	clear_split(splited);
 	if (tab_len(splited) != 3)
@@ -132,17 +132,17 @@ int	ft_sub(char *line, int index)
 {
 	char *tmp;
 	char **splited;
-	char	*ptr_trash;//<------------------kev
+	char	*ptr_trash;
 
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
-	ptr_trash = tmp;//<------------------kev
+	ptr_trash = tmp;
 	if (ft_strcmp(tmp, "sub") != 0)
 	{
-		free(tmp);//<------------------kev
+		free(tmp);
 		return (0);
 	}
 	tmp = ft_strsub(line, 3, ft_strlen(line));
-	free(ptr_trash);//<------------------kev
+	free(ptr_trash);
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	clear_split(splited);
 	if (tab_len(splited) != 3)

@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 13:37:29 by eliajin           #+#    #+#             */
-/*   Updated: 2018/07/03 19:55:02 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/07/04 02:55:33 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ int	ft_and(char *line, int index)
 {
 	char	*tmp;
 	char	**splited;
-	char	*ptr_trash;//<------------------kev
+	char	*ptr_trash;
 
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
-	ptr_trash = tmp;//<------------------kev
+	ptr_trash = tmp;
 	if (ft_strcmp(tmp, "and") != 0)
 	{
-		free(tmp);//<------------------kev
+		free(tmp);
 		return (0);
 	}
 	tmp = ft_strsub(line, 3, ft_strlen(line));
-	free(ptr_trash);//<------------------kev
+	free(ptr_trash);
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	clear_split(splited);
 	if (tab_len(splited) != 3)
@@ -50,19 +50,19 @@ int	ft_or(char *line, int index)
 {
 	char	*tmp;
 	char	**splited;
-	char	*ptr_trash;//<------------------kev
+	char	*ptr_trash;
 	int		i;
 
-	i = 0; //<------------------kev
+	i = 0;
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
-	ptr_trash = tmp;//<------------------kev
+	ptr_trash = tmp;
 	if (ft_strcmp(tmp, "or") != 0)
 	{
-		free(tmp);//<------------------kev
+		free(tmp);
 		return (0);
 	}
 	tmp = ft_strsub(line, 2, ft_strlen(line));
-	free(ptr_trash);//<------------------kev
+	free(ptr_trash);
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	clear_split(splited);
 	if (tab_len(splited) != 3)
@@ -86,17 +86,17 @@ int	ft_xor(char *line, int index)
 {
 	char	*tmp;
 	char	**splited;
-	char	*ptr_trash;//<------------------kev
+	char	*ptr_trash;
 
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
-	ptr_trash = tmp;//<------------------kev
+	ptr_trash = tmp;
 	if (ft_strcmp(tmp, "xor") != 0)
 	{
-		free(tmp);//<------------------kev
+		free(tmp);
 		return (0);
 	}
 	tmp = ft_strsub(line, 3, ft_strlen(line));
-	free(ptr_trash);//<------------------kev
+	free(ptr_trash);
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	if (tab_len(splited) != 3)
 		msg_error(ERR_NBR_ARG, index);
@@ -118,17 +118,17 @@ int	ft_xor(char *line, int index)
 int	ft_zjmp(char *line, int index)
 {
 	char	*tmp;
-	char	*ptr_trash;//<--------------------kev
+	char	*ptr_trash;
 
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
-	ptr_trash = tmp;//<--------------------kev
+	ptr_trash = tmp;
 	if (ft_strcmp(tmp, "zjmp") != 0)
 	{
-		free(tmp);//<--------------------kev
+		free(tmp);
 		return (0);
 	}
 	tmp = ft_strsub(line, 4, ft_strlen(line));
-	free(ptr_trash);//<--------------------kev
+	free(ptr_trash);
 	if (isdir(tmp) == 0)
 		msg_error(ERR_ARG, index);
 	if (tmp)
@@ -140,19 +140,19 @@ int	ft_ldi(char *line, int index)
 {
 	char	*tmp;
 	char	**splited;
-	char	*ptr_trash;//<------------------kev
-	int		i;//<------------------kev
+	char	*ptr_trash;
+	int		i;
 
-	i = 0;//<------------------kev
+	i = 0;
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
-	ptr_trash = tmp;//<------------------kev
+	ptr_trash = tmp;
 	if (ft_strcmp(tmp, "ldi") != 0)
 	{
-		free(tmp);//<------------------kev
+		free(tmp);
 		return (0);
 	}
 	tmp = ft_strsub(line, 3, ft_strlen(line));
-	free(ptr_trash);//<------------------kev
+	free(ptr_trash);
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	if (tab_len(splited) != 3)
 		msg_error(ERR_NBR_ARG, index);

@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 19:42:16 by eliajin           #+#    #+#             */
-/*   Updated: 2018/07/04 00:13:35 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/07/04 02:53:18 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ char	*rm_comment_header(char *line)
 	i = search_char(tmp, '"');
 	if (tmp[i + 1] && tmp[i + 1] != '#' && tmp[i + 1] != ' ')
 	{
-		free(tmp);//<---------------kev
+		free(tmp);
 		return (NULL);
 	}
 	if (tmp[i + 1] && tmp[i + 1] == ' ')
 	{
 		if (tmp[i + 2] && tmp[i + 2] != '#')
 		{
-			free(tmp);//<---------------kev
+			free(tmp);
 			return (NULL);
 		}
 	}
@@ -73,24 +73,24 @@ int		is_header(char *line, char *macro)
 {
 	char	*tmp;
 	char	*rm_comment;
-	char	*ptr_trash;//<---------------kev
+	char	*ptr_trash;
 
 	rm_comment = rm_comment_header(line);
 	if (rm_comment == NULL)
 		return (0);
 	tmp = ft_strsub(rm_comment, 0, ft_strlen(macro));
-	ptr_trash = tmp;//<---------------kev
+	ptr_trash = tmp;
 	if (ft_strcmp(tmp, macro) != 0)
 	{
-		free(tmp);//<---------------kev
-		free(rm_comment);//<---------------kev
+		free(tmp);
+		free(rm_comment);
 		return (0);
 	}
 	tmp = ft_strsub(rm_comment, ft_strlen(macro), ft_strlen(rm_comment));
-	free(ptr_trash);//<---------------kev
-	ptr_trash = tmp;//<---------------kev
+	free(ptr_trash);
+	ptr_trash = tmp;
 	tmp = ft_epur_str(tmp);
-	free(ptr_trash);//<---------------kev
+	free(ptr_trash);
 	if (rm_comment)
 		free(rm_comment);
 	if (tmp[0] != '"' || tmp[ft_strlen(tmp) - 1] != '"')
