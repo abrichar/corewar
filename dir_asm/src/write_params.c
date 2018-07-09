@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 16:46:23 by abrichar          #+#    #+#             */
-/*   Updated: 2018/07/03 18:09:11 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/07/09 18:44:56 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,17 @@ static void				write_ind(char *ind, t_asm *env,
 	ft_putshort_fd(to_write, env->fd);
 	if (to_search)
 		free(to_search);
-//	if (tmp)<-----------------------------kev
-//		free(tmp);<-----------------------kev
 }
 
 void					write_params(t_asm *env, char *split, t_op actual,
 					unsigned int size_to_here)
 {
 	char			**splited;
-	char			**ptr_trash;//<---------------kev
 	int				i;
 	int				to_write;
 	char			*str_sub;
 
 	splited = ft_strsplit(split, SEPARATOR_CHAR);
-	ptr_trash = splited;//<---------------kev
 	clear_split(splited);
 	i = -1;
 	to_write = 0;
@@ -80,24 +76,15 @@ void					write_params(t_asm *env, char *split, t_op actual,
 	{
 		if (check_param(splited[i]) == REG_CODE)
 		{
-			str_sub = ft_strsub(splited[i], 1,	ft_strlen(splited[i]));
+			str_sub = ft_strsub(splited[i], 1, ft_strlen(splited[i]));
 			to_write = ft_atoi(str_sub);
-		free(str_sub);
+			free(str_sub);
 			write(env->fd, &to_write, 1);
 		}
 		else if (check_param(splited[i]) == IND_CODE)
-		{
 			write_ind(splited[i], env, size_to_here);
-		}
 		else
 			write_dir(splited[i], env, actual, size_to_here);
 	}
-	i = 0;//<---------------kev
-	while (ptr_trash[i])//<---------------kev
-	{
-		free(ptr_trash[i]);//<---------------kev
-		i++;//<---------------kev
-	}
-	if (splited)
-		free(splited);
+	free_split(splited);
 }

@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 14:29:30 by eliajin           #+#    #+#             */
-/*   Updated: 2018/07/04 02:56:26 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/07/09 19:05:16 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,12 @@ int	ft_sti(char *line, int index)
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	if (tab_len(splited) != 3)
 		msg_error(ERR_NBR_ARG, index);
-	if (isreg(splited[0]) == 0)
+	if (isreg(splited[0]) == 0 || (isreg(splited[1]) == 0 && isindir(splited[1])
+				== 0 && isdir(splited[1]) == 0) || (isreg(splited[2]) == 0
+				&& isdir(splited[2]) == 0))
 		msg_error(ERR_ARG, index);
-	if (isreg(splited[1]) == 0 && isindir(splited[1]) == 0 &&
-		isdir(splited[1]) == 0)
-		msg_error(ERR_ARG, index);
-	if (isreg(splited[2]) == 0 && isdir(splited[2]) == 0)
-		msg_error(ERR_ARG, index);
-	if (tmp)
-		free(tmp);
-	if (splited)
-		free_split(splited);
+	ft_strdel(&tmp);
+	free_split(splited);
 	return (1);
 }
 
@@ -67,8 +62,8 @@ int	ft_fork(char *line, int index)
 
 int	ft_lld(char *line, int index)
 {
-	char *tmp;
-	char **splited;
+	char	*tmp;
+	char	**splited;
 	char	*ptr_trash;
 
 	tmp = ft_strsub(line, 0, search_char(line, ' '));
@@ -115,20 +110,17 @@ int	ft_lldi(char *line, int index)
 	if (isreg(splited[0]) == 0 && isindir(splited[0]) == 0 &&
 		isdir(splited[0]) == 0)
 		msg_error(ERR_ARG, index);
-	if (isreg(splited[1]) == 0 && isdir(splited[1]) == 0)
+	if ((isreg(splited[1]) == 0 && isdir(splited[1]) == 0) || (isreg(splited[2])
+				== 0))
 		msg_error(ERR_ARG, index);
-	if (isreg(splited[2]) == 0)
-		msg_error(ERR_ARG, index);
-	if (tmp)
-		free(tmp);
-	if (splited)
-		free_split(splited);
+	ft_strdel(&tmp);
+	free_split(splited);
 	return (1);
 }
 
 int	ft_lfork(char *line, int index)
 {
-	char *tmp;
+	char	*tmp;
 	char	*ptr_trash;
 
 	tmp = ft_strsub(line, 0, search_char(line, ' '));

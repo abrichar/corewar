@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 16:10:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/07/04 02:52:32 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/07/09 18:15:19 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,16 +93,18 @@ void				add_instru(char *line, t_parsing **buff)
 	t_parsing		*tmp;
 	char			*name;
 	char			*ptr_trash;
+	t_op			actual;
 
 	tmp = NULL;
 	name = NULL;
 	ptr_trash = NULL;
+	actual.opcode = 0;
 	if ((tmp = (t_parsing*)malloc(sizeof(t_parsing) * 1)))
 	{
 		ptr_trash = ft_epur_str(line);
 		tmp->content = re_write(ptr_trash);
 		name = ft_strsub(tmp->content, 0, search_char(tmp->content, ' ') + 1);
-		tmp->size = size_instru(tmp);
+		tmp->size = size_instru(tmp, actual);
 		tmp->label = 0;
 		tmp->next = NULL;
 		add_instru2(tmp, buff);

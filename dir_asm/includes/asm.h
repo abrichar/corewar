@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/07/03 21:13:04 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/07/09 20:28:20 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void					msg_error(char *msg, int index);
 ** prog_size.c
 */
 void					verif_size(t_asm *env);
-unsigned int			size_instru(t_parsing *tmp);
+unsigned int			size_instru(t_parsing *tmp, t_op actual);
 /*
 ** line.c
 */
@@ -77,7 +77,7 @@ void					parsing(char *file, t_asm *env);
 /*
 ** utilities.c
 */
-int						search_str(char **line, char c, t_asm *env); //<---------------- rajout env par kev
+int						search_str(char **line, char c, t_asm *env);
 int						search_char(char *line, char c);
 int						ft_is_number(char *line, int begin);
 int						isreg(char *line);
@@ -152,4 +152,10 @@ unsigned int			write_label2(t_parsing *tmp, char *to_search, unsigned
 */
 void					free_all(t_asm *env);
 void					free_split(char **split);
+
+/*
+**	ft_check_error.c
+*/
+void					ft_check_error(char **splited, int index);
+int						ft_check_len(char **tmp, int *i);
 #endif

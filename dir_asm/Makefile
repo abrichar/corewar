@@ -6,19 +6,19 @@
 #    By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 18:10:12 by abrichar          #+#    #+#              #
-#    Updated: 2018/07/04 02:39:50 by abrichar         ###   ########.fr        #
+#    Updated: 2018/07/09 20:38:35 by abrichar         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = asm
 
-CFLAG = -g # -fsanitize=address -fsanitize=undefined # -Wall -Wextra -Werror 
+CFLAG = -Wall -Wextra -Werror 
 CPPFLAGS = -Iincludes
 
 SRC_NAME = main.c line.c parsing.c utilities.c dump_header.c \
 			add_op.c check_op.c op1.c op2.c op3.c op4.c utilities2.c \
 			writend.c op.c prog_size.c write_params.c utilities3.c \
-			write_label.c free_all.c
+			write_label.c free_all.c ft_check_error.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 SRC_PATH = src

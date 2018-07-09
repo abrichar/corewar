@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 22:25:42 by eliajin           #+#    #+#             */
-/*   Updated: 2018/07/04 02:51:57 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/07/09 20:04:44 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,14 @@
 static unsigned int		write_octetcodage(t_op actual, char *arg)
 {
 	char			**splited;
-	char			**ptr_trash;
 	unsigned int	param1;
 	unsigned int	param2;
 	unsigned int	param3;
-	int				i;
 
 	param1 = 0;
 	param2 = 0;
 	param3 = 0;
-	i = 0;
 	splited = ft_strsplit(arg, SEPARATOR_CHAR);
-	ptr_trash = splited;
 	clear_split(splited);
 	if (actual.opcode != 1 && actual.opcode != 9 && actual.opcode != 12
 		&& actual.opcode != 15)
@@ -38,13 +34,7 @@ static unsigned int		write_octetcodage(t_op actual, char *arg)
 		if (actual.nb_arg == 3)
 			param3 = check_param(splited[2]) << 2;
 	}
-	while (ptr_trash[i])
-	{
-		free(ptr_trash[i]);
-		i++;
-	}
-	if (splited)
-		free(splited);
+	free_split(splited);
 	return (param1 + param2 + param3);
 }
 
@@ -104,7 +94,7 @@ static void				write_body(t_asm *env)
 	}
 	if (tmp)
 		free(tmp);
-	}
+}
 
 void					write_out(t_asm *env)
 {

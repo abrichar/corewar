@@ -6,26 +6,15 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 16:24:50 by eliajin           #+#    #+#             */
-/*   Updated: 2018/07/03 17:50:06 by kgricour         ###   ########.fr       */
+/*   Updated: 2018/07/09 18:45:29 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-/*
+
 void		clear_split(char **splited)
 {
-	int i;
-
-	i = -1;
-	while (++i < tab_len(splited))
-		splited[i] = ft_epur_str(splited[i]);
-}
-*/
-
-/*modif free clear_split kev*/
-void		clear_split(char **splited)
-{
-	int 	i;
+	int		i;
 	char	*tmp;
 
 	i = -1;

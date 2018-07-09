@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 15:00:24 by eliajin           #+#    #+#             */
-/*   Updated: 2018/07/04 02:56:39 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/07/09 17:17:11 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_aff(char *line, int index)
 {
-	char *tmp;
+	char	*tmp;
 	char	*ptr_trash;
 
 	tmp = ft_strsub(line, 0, search_char(line, ' '));

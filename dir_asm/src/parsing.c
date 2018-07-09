@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 00:17:52 by eliajin           #+#    #+#             */
-/*   Updated: 2018/07/04 03:50:52 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/07/09 18:35:09 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,20 @@ void		parsing(char *file, t_asm *env)
 	int		index;
 	int		ret;
 	char	*tmp;
+	char	*ptr_trash;
 
 	index = 1;
 	if (!(env->fd = open(file, O_RDONLY)))
 		msg_error(ERR_OPEN, 0);
 	while ((ret = get_next_line(env->fd, &line)) > 0)
 	{
-		tmp = ft_epur_str(rm_comment(line));
+		ptr_trash = rm_comment(line);
+		tmp = ft_epur_str(ptr_trash);
 		check_line(tmp, line, env, index);
-		if (line)
-			ft_strdel(&line);
-		if (tmp)
-			free(tmp);
+		if (ft_strcmp(line, ptr_trash) != 0)
+			ft_strdel(&ptr_trash);
+		ft_strdel(&line);
+		ft_strdel(&tmp);
 		index++;
 	}
 	ft_strdel(&line);

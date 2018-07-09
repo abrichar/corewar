@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 13:37:29 by eliajin           #+#    #+#             */
-/*   Updated: 2018/07/04 02:55:33 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/07/09 20:01:37 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,13 @@ int	ft_and(char *line, int index)
 	clear_split(splited);
 	if (tab_len(splited) != 3)
 		msg_error(ERR_NBR_ARG, index);
-	if (isdir(splited[0]) == 0 && isindir(splited[0]) == 0 &&
-		isreg(splited[0]) == 0)
+	if ((isdir(splited[0]) == 0 && isindir(splited[0]) == 0
+			&& isreg(splited[0]) == 0) || (isdir(splited[1]) == 0
+			&& isindir(splited[1]) == 0 && isreg(splited[1]) == 0)
+			|| (isreg(splited[2]) == 0))
 		msg_error(ERR_ARG, index);
-	if (isdir(splited[1]) == 0 && isindir(splited[1]) == 0 &&
-		isreg(splited[1]) == 0)
-		msg_error(ERR_ARG, index);
-	if (isreg(splited[2]) == 0)
-		msg_error(ERR_ARG, index);
-	if (tmp)
-		free(tmp);
-	if (splited)
-		free_split(splited);
+	ft_strdel(&tmp);
+	free_split(splited);
 	return (1);
 }
 
@@ -67,18 +62,9 @@ int	ft_or(char *line, int index)
 	clear_split(splited);
 	if (tab_len(splited) != 3)
 		msg_error(ERR_NBR_ARG, index);
-	if (isdir(splited[0]) == 0 && isindir(splited[0]) == 0 &&
-		isreg(splited[0]) == 0)
-		msg_error(ERR_ARG, index);
-	if (isdir(splited[1]) == 0 && isindir(splited[1]) == 0 &&
-		isreg(splited[1]) == 0)
-		msg_error(ERR_ARG, index);
-	if (isreg(splited[2]) == 0)
-		msg_error(ERR_ARG, index);
-	if (tmp)
-		free(tmp);
-	if (splited)
-		free_split(splited);
+	ft_check_error(splited, index);
+	free(tmp);
+	free_split(splited);
 	return (1);
 }
 
@@ -100,18 +86,9 @@ int	ft_xor(char *line, int index)
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	if (tab_len(splited) != 3)
 		msg_error(ERR_NBR_ARG, index);
-	if (isdir(splited[0]) == 0 && isindir(splited[0]) == 0 &&
-		isreg(splited[0]) == 0)
-		msg_error(ERR_ARG, index);
-	if (isdir(splited[1]) == 0 && isindir(splited[1]) == 0 &&
-		isreg(splited[1]) == 0)
-		msg_error(ERR_ARG, index);
-	if (isreg(splited[2]) == 0)
-		msg_error(ERR_ARG, index);
-	if (tmp)
-		free(tmp);
-	if (splited)
-		free_split(splited);
+	ft_check_error(splited, index);
+	free(tmp);
+	free_split(splited);
 	return (1);
 }
 
@@ -156,16 +133,11 @@ int	ft_ldi(char *line, int index)
 	splited = ft_strsplit(tmp, SEPARATOR_CHAR);
 	if (tab_len(splited) != 3)
 		msg_error(ERR_NBR_ARG, index);
-	if (isdir(splited[0]) == 0 && isindir(splited[0]) == 0 &&
-		isreg(splited[0]) == 0)
+	if ((isdir(splited[0]) == 0 && isindir(splited[0]) == 0
+				&& isreg(splited[0]) == 0) || (isdir(splited[1]) == 0
+		&& isreg(splited[1]) == 0) || (isreg(splited[2]) == 0))
 		msg_error(ERR_ARG, index);
-	if (isdir(splited[1]) == 0 && isreg(splited[1]) == 0)
-		msg_error(ERR_ARG, index);
-	if (isreg(splited[2]) == 0)
-		msg_error(ERR_ARG, index);
-	if (tmp)
-		free(tmp);
-	if (splited)
-		free_split(splited);
+	free(tmp);
+	free_split(splited);
 	return (1);
 }

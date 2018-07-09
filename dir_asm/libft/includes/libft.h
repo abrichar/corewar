@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 04:27:15 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/10 18:17:21 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/07/09 20:32:50 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <fcntl.h>
 # include <stdarg.h>
 # include <wchar.h>
+# include <limits.h>
 # define BUFF_SIZE 10
 
 typedef struct		s_list

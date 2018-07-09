@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/19 14:36:46 by abrichar          #+#    #+#             */
-/*   Updated: 2018/07/03 18:01:13 by kgricour         ###   ########.fr       */
+/*   Created: 2018/07/09 18:12:40 by abrichar          #+#    #+#             */
+/*   Updated: 2018/07/09 18:12:41 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,38 @@ static void		size_instru2(char *param, unsigned int *size, t_op actual)
 ** Calcule et stocke la taille des buff->content dans buff->size
 */
 
-unsigned int	size_instru(t_parsing *tmp)
+static void		ft_act_opcode(t_op actual, unsigned int *size)
+{
+	if (actual.opcode != 1 && actual.opcode != 9 &&
+		actual.opcode != 12 && actual.opcode != 15)
+		*size += 1;
+}
+
+static void		ft_free_instru(char ***splited, char ***ptr_trash)
+{
+	int		i;
+	char	**splited2;
+	char	**ptr2;
+
+	splited2 = *splited;
+	ptr2 = *ptr_trash;
+	i = 0;
+	while (ptr2[i])
+	{
+		free(ptr2[i]);
+		i++;
+	}
+	if (splited2)
+		free(splited2);
+}
+
+unsigned int	size_instru(t_parsing *tmp, t_op actual)
 {
 	char			**splited;
-	char			*str_sub;//<-----------------------kev
-	char			**ptr_trash;//<---------------kev
+	char			*str_sub;
+	char			**ptr_trash;
 	unsigned int	size;
 	int				i;
-	t_op			actual;
 
 	size = 0;
 	str_sub = NULL;
@@ -48,25 +72,16 @@ unsigned int	size_instru(t_parsing *tmp)
 	str_sub = ft_strsub(tmp->content, 0, i);
 	actual = find_opcode(str_sub);
 	free(str_sub);
-	if (actual.opcode != 1 && actual.opcode != 9 &&
-		actual.opcode != 12 && actual.opcode != 15)
-		size += 1;
-	str_sub = ft_strsub(tmp->content, i + 1, ft_strlen(tmp->content)); 
-	splited = ft_strsplit(str_sub, ',');//<-----------------------kev
-	ptr_trash = splited; //<---------------kev
-	free(str_sub);//<---------------kev
+	ft_act_opcode(actual, &size);
+	str_sub = ft_strsub(tmp->content, i + 1, ft_strlen(tmp->content));
+	splited = ft_strsplit(str_sub, ',');
+	ptr_trash = splited;
+	free(str_sub);
 	clear_split(splited);
 	i = -1;
 	while (++i < tab_len(splited))
 		size_instru2(splited[i], &size, actual);
-	i = 0;
-	while (ptr_trash[i])//<---------------kev
-	{
-		free(ptr_trash[i]);//<---------------kev
-		i++;//<---------------kev
-	}
-	if (splited)
-		free(splited);
+	ft_free_instru(&splited, &ptr_trash);
 	return (size);
 }
 
